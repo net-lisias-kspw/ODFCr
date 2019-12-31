@@ -354,7 +354,7 @@ namespace ODFC
             // One puppy will explode for every question you ask about this code.  Please, think of the puppies.
 
             Log.dbg("[ODFC TweakScale] Modes.Length: " + Convert.ToString(ODFC_config.modes.Length));
-            updateEditor(); // updateFT();
+            updateFT();
 
             if (ODFC_config.modes.Length < 2)
             {   // Disable unneccessary UI elements if we only have a single mode
@@ -504,13 +504,13 @@ namespace ODFC
 			}
         }
 
-        /// <summary>Updates the PAW with scaleFactor</summary>
+        /// <summary>Updates the PAW with scaleFactor and advises KSP that the ship has changed</summary>
         private void updateEditor()
         {
 
-            // following needed for TweakScale et al. Thank you to Lisias. 
-            GameEvents.onEditorShipModified.Fire(EditorLogic.fetch.ship);
             updateFT();
+            // following needed to advise KSP that the ship has been modified and it needs to update itself. (Lisias)
+            GameEvents.onEditorShipModified.Fire(EditorLogic.fetch.ship);
         }
 
         /// <summary>Updates the PAW label.</summary>
