@@ -14,10 +14,8 @@ namespace ODFC
         [ConditionalAttribute("DEBUG")]
         internal static void dbg(string msg)
         {
-            #if DEBUG
-                ScreenMessages.PostScreenMessage(msg, 1, ScreenMessageStyle.UPPER_CENTER, true);
-                UnityEngine.Debug.Log(msg);
-            #endif
+            ScreenMessages.PostScreenMessage(msg, 1, ScreenMessageStyle.UPPER_CENTER, true);
+            UnityEngine.Debug.Log(msg);
         }
     }
 }
