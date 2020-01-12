@@ -541,12 +541,14 @@ namespace ODFC
         /// <param name="scaleFactor">The scale factor.</param>
         internal void OnRescale(TweakScale.ScalingFactor.FactorSet scaleFactor)
         {
-            Log.dbg("scaleFactor: {0}", scaleFactor.quadratic);
+            Log.dbg("scaleFactor: {0}", scaleFactor);
+            Log.dbg("scaleFactor.quadratic {0}", scaleFactor.quadratic);
 
             /// <summary>this scales any resources on the part with ODFC:  </summary>           
+            Log.dbg("part {0}", this.part);
+            Log.dbg("part.Resources {0}", this.part.Resources);
             foreach (PartResource resource in this.part.Resources)
             {
-
                 Log.dbg("unscaled resource: {0}: {1} / {2}", resource.resourceName, resource.amount, resource.maxAmount);
                 resource.maxAmount *= scaleFactor.quadratic; // .cubic;
                 resource.amount *= scaleFactor.quadratic; // cubic;
@@ -557,7 +559,9 @@ namespace ODFC
             /// this scales the actual fuel cell, fuels, byproducts, and maxEC
             /// shouldn't scale rateLimit and threshold because are percentages
             ///</para></summary>
-            for (byte m = 0; m <= ODFC_config.modes.Length - 1 ; m++)
+            Log.dbg("ODFC_config {0}", ODFC_config);
+            Log.dbg("ODFC_config.modes {0}", ODFC_config, ODFC_config.modes);
+            for (int m = 0; m <= ODFC_config.modes.Length - 1 ; m++)
             {
                 Log.dbg("mode/modes: {0} / {1}", (m + 1), ODFC_config.modes.Length);
              // scale MaxEC
