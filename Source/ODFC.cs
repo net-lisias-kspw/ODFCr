@@ -559,8 +559,8 @@ namespace ODFC
             /// this scales the actual fuel cell, fuels, byproducts, and maxEC
             /// shouldn't scale rateLimit and threshold because are percentages
             ///</para></summary>
-            Log.dbg("ODFC_config {0}", ODFC_config);
-            Log.dbg("ODFC_config.modes {0}", ODFC_config, ODFC_config.modes);
+            Log.dbg("ODFC_config {0}", ODFC_config.modes.Length - 1);
+            Log.dbg(" ODFC_config.modes {0} / {2}", ODFC_config.modes.Length - 1, ODFC_config.modes);
             for (int m = 0; m <= ODFC_config.modes.Length - 1 ; m++)
             {
                 Log.dbg("mode/modes: {0} / {1}", (m + 1), ODFC_config.modes.Length);
